@@ -31,12 +31,13 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-
+/*
 function game(){
     let computerScore = 0;
     let playerScore = 0;
     let current = 0;
 
+    
     for(let i = 0; i < 5; i++){
         let player = playerInput();
         let computer = getComputerChoice();
@@ -71,10 +72,21 @@ function game(){
 
 }
 
-game();
+game();*/
 /*
 const playerSelection = "rock";
 const computerSelection = getComputerChoice();
 
 console.log(playRound(playerSelection, computerSelection));*/
 
+
+const buttons = document.querySelectorAll('.btn');
+
+buttons.forEach(btn => {
+    btn.addEventListener('click',returnName);
+});
+
+
+function returnName(e){
+    console.log(e.target.innerText);
+}
