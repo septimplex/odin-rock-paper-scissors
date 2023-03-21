@@ -5,34 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="javascript.js" defer></script>
 </head>
 <body>
-    <header>
+    <header id="header">
         <h1>ROCK-PAPER-SCISSORS</h1>
     </header>
     <div id="score">
         <h3>SCORE:</h3>
-        <div id="score-teams">
-            <h5>YOU</h5>
-            <h5>COMPUTER</h5>
-        </div>
-        <div id="score-result">
-            <h5 id="score-player">0</h5>
-            <h5>-</h5>
-            <h5 id="score-computer">0</h5>
+        <div id="score-container">
+            <div id="container-player">
+                <h4>YOU</h4>
+                <h2 id="score-player">0</h2>
+            </div>
+            <p>-</p>
+            <div id="container-computer">
+                <h4>COMPUTER</h4>
+                <h2 id="score-computer">0</h2>
+            </div>
         </div>
     </div>
     <div id="game">
         <div id="game-1">
             <div id="game-player">
                 <h5>YOU CHOSE:</h5>
-                <img>
+                <img src="img/scissors.gif">
             </div>
             <div id="game-computer">
                 <h5>COMPUTER CHOSE:</h5>
-                <img>
+                <img src="img/scissors.gif">
             </div>
         </div>
         <div id="game-2">
@@ -40,11 +43,20 @@
         </div>
     </div>
     <div id="choice">
-        <h3>CHOOSE YOUR WEAPON:</h3>
+        <h4>CHOOSE YOUR WEAPON:</h4>
         <div id="choice-container">
-            <button class="btn">Rock</button>
-            <button class="btn">Paper</button>
-            <button class="btn">Scissors</button>
+            <div id="choice-1">
+                <button class="btn"><img alt="rock-gif" src="img/stone.gif"></button>
+                <h2>ROCK</h2>
+            </div>
+            <div id="choice-2">
+                <button class="btn"><img alt="paper-gif" src="img/paper.gif"></button>
+                <h2>PAPER</h2>
+            </div>
+            <div id="choice-3">
+                <button class="btn"><img alt="scissors-gif" src="img/scissors.gif"></button>
+                <h2>SCISSORS</h2>
+            </div>
         </div>
     </div>
 
