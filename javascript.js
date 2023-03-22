@@ -88,5 +88,33 @@ buttons.forEach(btn => {
 
 
 function returnName(e){
-    console.log(e.target.innerText);
+    // return me rock ----console.log(e.target.id);
+    // return me img -----console.log(e.target.src);
+
+    const playerImg = document.querySelector('#choice-player');
+    const computerImg = document.querySelector('#choice-computer');
+
+    const playersChoiceImg = e.target.src;
+
+    playerImg.src = playersChoiceImg;
+
+    const playersChoiceText = e.target.id;
+    const computerChoiceText = getComputerChoice();
+    
+    if(computerChoiceText == 'rock'){
+        computerImg.src = "img/stone.gif";
+    }
+    if(computerChoiceText == 'paper'){
+        computerImg.src = "img/paper.gif";
+    }
+    if(computerChoiceText == 'scissors'){
+        computerImg.src = "img/scissors.gif";
+    }
+    const r = playRound(playersChoiceText,computerChoiceText);
+    console.log(playersChoiceText);
+    console.log(computerChoiceText);
+    console.log(r);
+
+
+
 }
