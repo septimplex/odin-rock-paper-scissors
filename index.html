@@ -13,6 +13,17 @@
     <header id="header">
         <h1>ROCK-PAPER-SCISSORS</h1>
     </header>
+    <div id="begin">
+        <button id="begin-button" onClick="start()">PLAY</button>
+    </div>
+    <div id="end" style="display:none">
+        <h1>GAME OVER</h1>
+        <h2>SCORE</h2>
+        <h2 id = "end-score"></h2>
+        <h2 id="game-result"></h2>
+        <button id="again-button" onClick="restart()">TRY AGAIN</button>
+    </div>
+    <div id="game-content" style="display:none">
     <div id="score">
         <h3>SCORE:</h3>
         <div id="score-container">
@@ -39,7 +50,7 @@
             </div>
         </div>
         <div id="game-2">
-            <h3 id="display-match">...</h3>
+            <h3 id="display-match">Good Luck!</h3>
         </div>
     </div>
     <div id="choice">
@@ -58,6 +69,7 @@
                 <h2>SCISSORS</h2>
             </div>
         </div>
+    </div>
     </div>
 
     <footer id="footer">

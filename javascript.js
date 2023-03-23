@@ -60,7 +60,13 @@ buttons.forEach(btn => {
 function playGame(e){
     let currentValuePlayer = Number(numScorePlayer.innerText);
     let currentValueComputer = Number(numScoreComputer.innerText);
+    
     //get html
+    const game = document.querySelector("#game-content");
+    const end = document.querySelector("#end");
+    const res = document.querySelector("#game-result");
+    const score = document.querySelector("#end-score");
+    
     const playerImg = document.querySelector('#choice-player');
     //insert player choice into img 
     const playersChoiceImg = e.target.src;
@@ -82,21 +88,53 @@ function playGame(e){
     }
 
     if(currentValuePlayer == 5){
-        display.innerText = "Congratulations, you won!";
-        setTimeout("reset()",2500);
+        res.innerText = "Congratulations, you won!"
+        score.innerText = currentValuePlayer + " - " + currentValueComputer;
+        game.style.display = "none";
+        end.style.display = "flex";    
     }
 
     if(currentValueComputer == 5){
-        display.innerText = "You lost... Better luck next time!";
-        setTimeout("reset()",2500);  
+        res.innerText = "You lost... Better luck next time!"
+        score.innerText = currentValuePlayer + " - " + currentValueComputer;
+        game.style.display = "none";
+        end.style.display = "flex";
     }
         
 }
 
-function reset(){
+
+function start(){
+    const begin = document.querySelector("#begin");
+    const game = document.querySelector("#game-content");
+    const end = document.querySelector("#end");
+
+    begin.style.display = "none";
+    game.style.display = "block";
+    end.style.display = "none";   
+}
+
+function restart(){
+    const begin = document.querySelector("#begin");
+    const game = document.querySelector("#game-content");
+    const end = document.querySelector("#end");
+
+    const computerImg = document.querySelector('#choice-computer');
+    const playerImg = document.querySelector('#choice-player');
+    const display = document.querySelector("#display-match");
+    const numScorePlayer = document.querySelector("#score-player");
+    const numScoreComputer = document.querySelector("#score-computer");
+
+    computerImg.src = "img/plain-white-background.jpg";
+    playerImg.src = "img/plain-white-background.jpg";
+    display.innerText = "Good Luck!";
     numScoreComputer.innerText = "0";
     numScorePlayer.innerText = "0";
-    display.innerText = "Play again?";
+
+
+    begin.style.display = "none";
+    game.style.display = "block";
+    end.style.display = "none";
 }
 
 
