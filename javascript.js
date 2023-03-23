@@ -6,99 +6,28 @@ function getComputerChoice(){
     return choices[computerChoice];
 }
 
-//player input
-function playerInput(){
-    let player = prompt("Rock, paper or scissors?");
-    return player;
-
-}
-
-
-
 function playRound(playerSelection, computerSelection){
     let playerSelectionLower = playerSelection.toLowerCase();
+    
     if (playerSelectionLower == computerSelection){
-        /*return "It's a tie.";*/
+        display.innerText = "It's a tie.";
         return 0;
     }
     else if((playerSelectionLower == "paper" && computerSelection == "rock") || (playerSelectionLower == "rock" && computerSelection == "scissors") || (playerSelectionLower == "scissors" && computerSelection == "paper")){
-        /*return "You win! " + playerSelectionLower + " beats " + computerSelection + ".";*/
+        display.innerText = "You win! " + playerSelectionLower + " beats " + computerSelection + ".";
         return 1;
+        
     }   
     else{
-        /*return "You lose! " + computerSelection + " beats " + playerSelectionLower + ".";*/
+        display.innerText = "You lose! " + computerSelection + " beats " + playerSelectionLower + ".";
         return -1;
     }
 }
 
-/*
-function game(){
-    let computerScore = 0;
-    let playerScore = 0;
-    let current = 0;
-
-    
-    for(let i = 0; i < 5; i++){
-        let player = playerInput();
-        let computer = getComputerChoice();
-
-        current = playRound(player,computer); // returns 0, 1 or -1;
-        // tied
-        if (current == 0){
-            console.log("It's a tie.");
-        }
-        // win for player
-        else if  (current == 1){
-            console.log("You win! " + player + " beats " + computer + ".");
-            playerScore += 1;
-        }
-        else{
-            console.log("You lose! " + computer + " beats " + player + ".");
-            computerScore +=1;
-        }   
-    }
-
-    console.log("GAME OVER");
-
-    if(computerScore == playerScore){
-        console.log("Game was tied!");
-    }
-    else if(playerScore > computerScore){
-        console.log("Congratulations, you won!");
-    }
-    else{
-        console.log("You lost... Better luck next time!");
-    }
-
-}
-
-game();*/
-/*
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-
-console.log(playRound(playerSelection, computerSelection));*/
-
-
-const buttons = document.querySelectorAll('.btn');
-
-buttons.forEach(btn => {
-    btn.addEventListener('click',returnName);
-});
-
-
-function returnName(e){
-    // return me rock ----console.log(e.target.id);
-    // return me img -----console.log(e.target.src);
-
-    const playerImg = document.querySelector('#choice-player');
+function getComputer(){
     const computerImg = document.querySelector('#choice-computer');
 
-    const playersChoiceImg = e.target.src;
-
-    playerImg.src = playersChoiceImg;
-
-    const playersChoiceText = e.target.id;
+    //get computer choice and insert into img
     const computerChoiceText = getComputerChoice();
     
     if(computerChoiceText == 'rock'){
@@ -110,11 +39,68 @@ function returnName(e){
     if(computerChoiceText == 'scissors'){
         computerImg.src = "img/scissors.gif";
     }
-    const r = playRound(playersChoiceText,computerChoiceText);
-    console.log(playersChoiceText);
-    console.log(computerChoiceText);
-    console.log(r);
 
-
-
+    return computerChoiceText;
 }
+
+//get html
+const display = document.querySelector("#display-match");
+const numScorePlayer = document.querySelector("#score-player");
+const numScoreComputer = document.querySelector("#score-computer");
+
+
+const buttons = document.querySelectorAll('.btn');
+
+
+buttons.forEach(btn => {
+    btn.addEventListener('click',playGame);
+});
+
+
+function playGame(e){
+    let currentValuePlayer = Number(numScorePlayer.innerText);
+    let currentValueComputer = Number(numScoreComputer.innerText);
+    //get html
+    const playerImg = document.querySelector('#choice-player');
+    //insert player choice into img 
+    const playersChoiceImg = e.target.src;
+    playerImg.src = playersChoiceImg;
+
+    const playersChoiceText = e.target.id;
+    const computer = getComputer();
+    const player =  playersChoiceText;
+    //returns 1 for players win, -1 for players loss, 0 for tie
+    let result = playRound(player,computer);
+    
+    if(result == 1){
+        currentValuePlayer ++;
+        numScorePlayer.innerText = currentValuePlayer;
+    }
+    if(result == -1){
+        currentValueComputer ++;
+        numScoreComputer.innerText = currentValueComputer;
+    }
+
+    if(currentValuePlayer == 5){
+        display.innerText = "Congratulations, you won!";
+        setTimeout("reset()",2500);
+    }
+
+    if(currentValueComputer == 5){
+        display.innerText = "You lost... Better luck next time!";
+        setTimeout("reset()",2500);  
+    }
+        
+}
+
+function reset(){
+    numScoreComputer.innerText = "0";
+    numScorePlayer.innerText = "0";
+    display.innerText = "Play again?";
+}
+
+
+         
+
+
+
